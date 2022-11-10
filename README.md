@@ -10,24 +10,17 @@
 ---
 
 ```
- 1  passwd root
- 2  apt update
- 3  apt install postgresql
- 4  wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4%2Bdebian11_all.deb
- 5  dpkg -i zabbix-release_6.0-4+debian11_all.deb
- 6  apt update 
- 7  sudo apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts nano -y #
- 8  zabbix-agent
- 9  ls
-10  dpkg -i zabbix-release_6.0-4+debian11_all.deb
-11  dpkg -i zabbix-release_6.0-4+debian11_all.deb
-12  sudo -u postgres createuser --pwprompt zabbix
-13  sudo -u postgres createdb -O zabbix zabbix
-14  zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
-15  sudo nano /etc/zabbix/zabbix_server.conf
-16  vim /etc/zabbix/zabbix_server.conf
-17  sudo systemctl restart zabbix-server apache2
-18  sudo systemctl enable zabbix-server apache2
+apt install postgresql
+wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4%2Bdebian11_all.deb
+dpkg -i zabbix-release_6.0-4+debian11_all.deb
+apt update 
+sudo apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts nano -y 
+sudo -u postgres createuser --pwprompt zabbix
+sudo -u postgres createdb -O zabbix zabbix
+zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
+vim /etc/zabbix/zabbix_server.conf
+sudo systemctl restart zabbix-server apache2
+sudo systemctl enable zabbix-server apache2
 ```
 
 `Zabbix`
@@ -44,14 +37,14 @@
 ---
 
 ```
-1  wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4%2Bdebian11_all.deb
-2  dpkg -i zabbix-release_6.0-4+debian11_all.deb
-3  apt update
-4  sudo apt install zabbix-agent -y
-5  sudo systemctl restart zabbix-agent
-6  sudo systemctl enable zabbix-agent
-7  vim /etc/zabbix/zabbix_agentd.conf 
-8  sudo systemctl restart zabbix-agent
+wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4%2Bdebian11_all.deb
+dpkg -i zabbix-release_6.0-4+debian11_all.deb
+apt update
+sudo apt install zabbix-agent -y
+sudo systemctl restart zabbix-agent
+sudo systemctl enable zabbix-agent
+vim /etc/zabbix/zabbix_agentd.conf 
+sudo systemctl restart zabbix-agent
 
 ```
 
